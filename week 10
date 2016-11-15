@@ -1,0 +1,29 @@
+float [] population;
+
+void setup(){
+  size(480, 240);
+  Table stats = loadTable("worldpop.csv", "header");
+  population = new float [stats.getRowCount()-2];
+  for (int i=0; i<stats.getRowCount()-2; i++){
+    population[i] = stats.getInt(i, 1);
+  }
+}
+
+
+void draw(){
+  background(255);
+  stroke(0, 0, 255);
+  noFill();
+  beginShape();
+  for(int i = 0; i < population.length; i++){
+   float x = map(i, 0, population.length, 20, 460);
+   float y = map(population[i], 0, 81, 22, 26);
+   stroke(200);
+   line(x, 0, x, height);
+   stroke(0,0,255);
+   vertex(x, y); 
+  }
+  endShape();
+  
+  
+}
