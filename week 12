@@ -1,0 +1,43 @@
+
+float x, y, z;
+float rotation = PI/48;
+PImage img;
+PShape water;
+
+void setup() {
+
+  size(800, 600, P3D); 
+  sphereDetail(40);
+  noStroke();
+  img=loadImage("water.jpg");
+   water = createShape(SPHERE, 70);
+   water.setTexture(img);
+   
+  x = width/2;
+  y = height/2;
+  z = 0;
+}
+
+void draw() {
+  
+  noFill();
+  translate(mouseX, y, z);
+  background(0);
+  rotateY(rotation);
+  rotateX(rotation*32.5);
+ // rotateZ(rotation*32.0);
+  sphere (500);
+  
+  stroke(133,224,223);
+  translate(-100, y, z);
+  background(0);
+  rotateY(rotation);
+  rotateX(rotation*0.3);
+   //rotateZ(rotation*8);
+  shape(water, 0, 0);
+  
+  stroke (78,78,205);
+  sphere(150);
+
+  rotation+= PI/48;
+}
